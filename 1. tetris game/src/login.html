@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tetris menu</title>
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <form class="form" action="/components/game.html" method="GET">
+        <h1>Login</h1>
+        <label>
+            <input type="text" name="username" placeholder="Username">
+        </label>
+        <input type="submit" name="login_btn" value="Login" onclick="storeName(this.form.username.value)">
+    </form>
+
+    <script src="/js/login.js"></script>
+    <script>init()</script>
+</body>
+</html>

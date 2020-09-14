@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tetris</title>
+    <link rel="stylesheet" type="text/css" href="/css/game.css">
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script src="/js/globalVars.js" defer></script>
+    <script src="/js/figure.js" defer></script>
+    <script src="/js/inputKeyProcessing.js" defer></script>
+    <script src="/js/login.js" defer></script>
+    <script src="/js/tetrisLogic.js" defer></script>
+    <script src="/js/tetrisDraw.js" defer></script>
+
+    <audio id="clearSound" src="/sounds/clear.mp3" preload="auto"></audio>
+    <audio id="fallSound" src="/sounds/fall.mp3" preload="auto"></audio>
+    <audio id="loseSound" src="/sounds/lose.mp3" preload="auto"></audio>
+
+    <div class="gameScreen">
+        <div class="info">
+            <label id="PlayerNameLabel"></label>
+            <br>
+            <label id="CurrentLevelLabel">
+                Level: 1
+            </label>
+            <br>
+            <label id="ScoreLabel">
+                Score: 0
+            </label>
+            <br>
+            <label>Next figure:</label>
+            <br>
+            <canvas id="nextFigureCanvas" class="canvas nextFigureCanvas" height=150 width=150>
+            </canvas>
+            <br>
+            <label>
+                Controls:<br>
+                Up arrow - rotate figure<br>
+                Left arrow - move figure left;<br>
+                Right arrow - move figure right;<br>
+                Down arrow - drop figure.<br>
+            </label>
+        </div>
+        <canvas id="gameCanvas" class="canvas gameCanvas" height=600 width=300>
+        </canvas>
+    </div>
+</body>
+</html>
