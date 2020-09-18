@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta:700');
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+    background: #eee;
+    font-family: 'Mukta', sans-serif;
+}
+
+section {
+    width: 20em;
+    min-height: 14em;
+    margin: 14% auto;
+    padding: 2em;
+    border-radius: 1.625rem;
+    position: relative;
+    background: #e9e9e9;
+    box-shadow: #e4e4e4 1em 1em;
+}
+
+input {
+    padding: 1em;
+    height: 3em;
+    width: 18em;
+    border: none;
+    border-left: #444 solid 8em;
+    background: #f9f9f9;
+    color: #111;
+    border-radius: 1.625rem;
+    transition: 100ms ease-out all;
+    font-size: 14px;
+    display: block;
+    position: relative;
+}
+
+input:focus {
+    outline: none;
+    border-left:  #4cb050 3em solid;
+    background: #fff;
+    transition: 100ms ease-out all;
+}
+
+input + label {
+    position: relative;
+    top: -2.9em;
+    left: 2.2em;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #eee;
+}
+
+input:focus + label {
+    left: -20em;
+}
+
+input[type=submit] {
+    border-left: 0;
+    width: 8em;
+    color: #999;
+    margin-left: 10em;
+    margin-top: 1em;
+    font-family: 'Mukta', sans-serif;
+    text-transform: uppercase;
+    line-height: 1.1em;
+    cursor: pointer;
+    border: 2px solid #f9f9f9;
+}
+
+input[type=submit]:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+    color:#4cb050;
+}
+
+input[type=submit]:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+    color: #4cb050;
+    border-color:#4cb050;
+}

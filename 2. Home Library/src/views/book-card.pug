@@ -1,0 +1,25 @@
+div(id = "bookModal" class = "w3-modal w3-animate-opacity")
+	div(class = "w3-modal-content")
+		div(class = "w3-card-4 w3-green")
+			header(class="w3-container w3-green")
+				p
+					span(class="w3-button w3-display-topright" onClick=`toggleModalWindow()`) &times
+					h2 Input Form
+			div(class="w3-container w3-white")
+				p
+					label Title
+					input(id="book-title-input" class="w3-input" type="text")
+				p
+					label Author
+					input(id="book-author-input" class="w3-input" type="text")
+				p
+					label Publish date
+					input(id="book-date-input" class="w3-input" type="text")
+				p
+					label(id="user-label")
+				p
+					button(class = "w3-button w3-green w3-hover-pale-green" onClick=`saveButtonClick()`) Save
+					| 
+					button(id="ReturnButton" class = "w3-button w3-green w3-hover-pale-green" onClick=`returnButtonClick()`) Return
+					button(id="GiveButton" class = "w3-button w3-green w3-hover-pale-green" onClick=`giveButtonClick()`) Give
+					button(class = "w3-button w3-red w3-hover-pale-red w3-right" onClick=`deleteButtonClick()`) Delete

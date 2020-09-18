@@ -1,0 +1,19 @@
+div(id = "giveModal" class = "w3-modal")
+	div(class = "w3-modal-content")
+		div(class = "w3-card-4 w3-green w3-animate-opacity")
+			header(class="w3-container w3-green")
+				p
+					span(class="w3-button w3-display-topright" onClick=`toggleGiveModalWindow()`) &times
+					h2 Give a book
+			div(class="w3-container w3-white")
+				form(id="giveForm")
+					p
+						label Name
+						input(id="user-input" class="w3-input" type="text" required)
+					p
+						label Until
+						input(id="return-date-input" class="w3-input" type="date" required)
+				p
+					button(class = "w3-button w3-green w3-hover-pale-green" onClick=`giveBookOK()`) OK
+					| 
+					button(class = "w3-button w3-red w3-hover-pale-red" onClick=`giveBookCancel()`) Cancel

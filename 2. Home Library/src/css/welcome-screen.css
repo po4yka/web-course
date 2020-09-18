@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta:700');
+
+/* make body have 100% of the browser height */
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Mukta', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background: #f1f1f1;
+}

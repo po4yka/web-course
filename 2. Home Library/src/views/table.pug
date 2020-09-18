@@ -1,0 +1,24 @@
+//- reusing blocks by mixins
+mixin row(i)
+	//- outdated books: date was expired
+	if (books[i].returnDate != null && Date.parse(books[i].returnDate) <= Date.now())
+		tr(class="w3-pale-red w3-hover-red" onClick=`toggleModalWindow(${books[i].id})`)
+			block
+	//- has owner, but OK return date
+	else if (books[i].owner != null)
+			tr(class="w3-pale-yellow w3-hover-yellow" onClick=`toggleModalWindow(${books[i].id})`)
+				block
+	else
+		tr(class="w3-pale-green w3-hover-green" onClick=`toggleModalWindow(${books[i].id})`)
+			block
+
+table(id="table" class="w3-table-all w3-hoverable w3-center")
+	tr(id="table-header" class="w3-green")
+		td Book title
+		td Author
+		td Publish date
+	- for(let i = 0; i < books.length; i += 1)
+		+row(i)
+			td #{books[i].title}
+			td #{books[i].author}
+			td #{books[i].date}

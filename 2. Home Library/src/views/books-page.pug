@@ -1,0 +1,26 @@
+html
+head
+	meta(charset="utf-8")
+	title List of books
+	link(rel='stylesheet' href="https://www.w3schools.com/w3css/4/w3.css")
+body
+	h1(class="w3-center")
+		|Electronic home library
+	div(class="w3-container")
+		p
+			label Filter:&nbsp;&nbsp;
+			input(class="w3-radio" type="radio" name="filter" onClick=`updateTable()` value="none" checked)
+			label &nbsp; None &nbsp;
+			input(class="w3-radio" type="radio" name="filter" onClick=`updateTable()` value="inStock")
+			label &nbsp; In stock &nbsp;
+			input(class="w3-radio" type="radio" name="filter" onClick=`updateTable()` value="inUse")
+			label &nbsp; In use &nbsp;
+			input(class="w3-radio" type="radio" name="filter" onClick=`updateTable()` value="outdated")
+			label &nbsp; Outdated &nbsp;
+			button(class = "w3-button w3-green w3-hover-pale-green w3-right" onClick=`toggleAddModalWindow()`) Add book
+	p
+		include table
+	include add-modal
+	include book-card
+	include give-modal
+	script(src="/js/books-page.js")

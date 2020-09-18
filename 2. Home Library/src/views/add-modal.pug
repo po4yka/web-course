@@ -1,0 +1,23 @@
+div(id = "addModal" class = "w3-modal")
+	div(class = "w3-modal-content")
+		div(class = "w3-card-4 w3-green")
+			header(class="w3-container w3-green")
+				span(class="w3-button w3-display-topright" onClick=`toggleAddModalWindow()`) &times
+				h2 Add a book
+			div(class="w3-container w3-white")
+				form(id="addForm")
+					p
+						label Title
+						input(id="NewBookTitle" class="w3-input" type="text" required)
+					p
+						label Author
+						input(id="NewBookAuthor" class="w3-input" type="text" required)
+					p
+						label Publish date
+						input(id="NewBookDate" class="w3-input" type="text" required)
+				
+				div
+					button(class = "w3-button w3-green w3-hover-pale-green" onClick=`addBookOK()`) OK
+					| 
+					button(class = "w3-button w3-red w3-hover-pale-red" onClick=`addBookCancel()`) Cancel
+				br

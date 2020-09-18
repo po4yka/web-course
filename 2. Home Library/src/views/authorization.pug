@@ -1,0 +1,11 @@
+link(rel='stylesheet' type='text/css' media='screen' href='/css/authorization.css')
+section
+    form(action='/autherization' method='post')
+        div
+            input(type='text' name='username' title='username')
+            label(for='username') username
+        div
+            input(type='password' name='password')
+            label(for='password') password
+        div
+            input(type='submit' value='log in')
