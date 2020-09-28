@@ -1,4 +1,5 @@
 html
+	link(rel='stylesheet' type='text/css' media='screen' href='/css/books-page.css')
 head
 	meta(charset="utf-8")
 	title List of books
@@ -17,7 +18,11 @@ body
 			label &nbsp; In use &nbsp;
 			input(class="w3-radio" type="radio" name="filter" onClick=`updateTable()` value="outdated")
 			label &nbsp; Outdated &nbsp;
-			button(class = "w3-button w3-green w3-hover-pale-green w3-right" onClick=`toggleAddModalWindow()`) Add book
+			div(class='btn-fun-div')
+				label(class="book-return-label") &nbsp; Before date: &nbsp;
+				input#start(type='date' class='book-return-date' name='book-return-form' value='2020-09-13')
+				button(class="w3-button w3-green w3-hover-pale-green w3-right" onClick=`toggleAddModalWindow()`) Add book
+				button(class="w3-button w3-green w3-hover-pale-green" onClick=`filterByDate()`) Filter
 	p
 		include table
 	include add-modal

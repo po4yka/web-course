@@ -62,7 +62,7 @@ app.use('/js', express.static(__dirname + '/src/js'));
 app.use('/css', express.static(__dirname + '/src/css'));
 
 app.set('view engine', 'pug');
-app.set('views', path.join(__dirname + '/src/views'));
+app.set('views', './src/views');
 app.use('/', routes);
 
 app.listen(port, (err) => {

@@ -41,9 +41,10 @@ router.get("/library", (req, res, next) => {
 router.get("/library/table", (req, res, next) => {
 	if (req.user) {
 		console.log("Books table render");
-		// app.render(view, [locals], callback)
-		// send librarian.books as variable books
-		res.send(pug.compileFile("./src/views/table.pug")( {books: librarian.books} ));
+
+		res.send(pug.compileFile("./src/views/books-page.pug")( {books: librarian.books}));
+
+		res.end();
 		next();
 	} else {
 		res.redirect('/authorization');
@@ -57,11 +58,13 @@ router.get("/library/table", (req, res, next) => {
 router.get('/library/table-in-stock', (req, res, next) => {
 	if (req.user) {
 		console.log("Got GET request at /library/table-in-stock");
-		res.send(pug.compileFile("./src/views/table.pug")( {books: librarian.books.filter (
+
+		res.send(pug.compileFile("./src/views/books-page.pug")( {books: librarian.books.filter (
 			(book) => { // Filter function
 				return (book.owner === null);
 			}
 		)}));
+
 		next();
 	} else {
 		res.redirect('/authorization');
@@ -71,13 +74,15 @@ router.get('/library/table-in-stock', (req, res, next) => {
 router.get('/library/table-in-use', (req, res, next) => {
 	if (req.user) {
 		console.log("Got GET request at /library/table-in-use");
-		res.send(pug.compileFile("./src/views/table.pug")( {books: librarian.books.filter (
-			(book) => { // Filter function
+
+		res.send(pug.compileFile("./src/views/books-page.pug")( {books: librarian.books.filter (
+			(book) => {
 				if (!book.returnDate)
 					return false;
 				return (Date.parse(book.returnDate) > Date.now());
 			}
 		)}));
+
 		next();
 	} else {
 		res.redirect('/authorization');
@@ -87,13 +92,48 @@ router.get('/library/table-in-use', (req, res, next) => {
 router.get('/library/table-outdated', (req, res, next) => {
 	if (req.user) {
 		console.log("Got GET request at /library/table-outdated");
-		res.send(pug.compileFile("./src/views/table.pug")( {books: librarian.books.filter (
-			(book) => { // Filter function
+
+		res.send(pug.compileFile("./src/views/books-page.pug")( {books: librarian.books.filter (
+			(book) => {
 				if (!book.returnDate)
 					return false;
 				return (Date.parse(book.returnDate) <= Date.now());
 			}
 		)}));
+
+		next();
+	} else {
+		res.redirect('/authorization');
+	}
+});
+
+router.post('/library/before-date-sort', (req, res, next) => {
+	if (req.user) {
+		console.log("Got GET request at /library/before-date-sort");
+		console.log(req.body);
+
+		res.send(pug.compileFile("./src/views/books-page.pug")( {books: librarian.books.filter (
+			(book) => {
+				if (!book.returnDate)
+					return false;
+				// return (Date.parse(book.returnDate) <= Date.now());
+				let bookReturnDate = new Date(Date.parse(book.returnDate));
+				if (bookReturnDate.getFullYear() < req.body["year"]) {
+					return true;
+				} else if (bookReturnDate.getFullYear === req.body["year"]) {
+					if (bookReturnDate.month < req.body["month"]) {
+						return true;
+					} else if (bookReturnDate.day <= req.body["day"]) {
+						return true;
+					} else {
+						return false;
+					}
+				} else {
+					return false;
+				}
+			}
+		)}));
+
 		next();
 	} else {
 		res.redirect('/authorization');
@@ -160,8 +200,7 @@ router.put('/library/return', (req, res, next) => {
 	}
 });
 
-router.get("/books/:num", (req, res, next) => {
-	next();
+router.get("/library/:num", (req, res, next) => {
 	if (req.user) {
 		const id = req.params.num;
 		console.log(`Got GET request of book with ${id} id:`);
@@ -171,6 +210,28 @@ router.get("/books/:num", (req, res, next) => {
 				res.send(value);
 			}
 		}
+
+		next();
+	} else {
+		res.redirect('/authorization');
+	}
+});
+
+router.get("/books/:num", (req, res, next) => {
+	if (req.user) {
+		const id = req.params.num;
+		console.log(`Got GET request of book with ${id} id:`);
+		for (value of librarian.books) {
+			if (value.id == id) {
+				res.send(pug.compileFile("./src/views/books-page.pug")( { books: librarian.books.filter (
+					(book) => {
+						return (book.id === value.id)
+					}
+				)}));
+			}
+		}
+
+		next();
 	} else {
 		res.redirect('/authorization');
 	}

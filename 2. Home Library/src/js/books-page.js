@@ -1,7 +1,7 @@
 let currentBookId = null;
 let buffer;
 
-updateTable();
+// updateTable();
 
 function sendRequest(requestType, URL, data = "", sync = true,
 	                  callback = (text) =>
@@ -9,31 +9,48 @@ function sendRequest(requestType, URL, data = "", sync = true,
 							console.log(text);
 							updateTable();
 						}) {
+	
 	console.log("Sending", requestType, "request at URL", URL, "with data", data);
 	
 	const xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		// 4 - DONE state;
 		// 200 - OK status
+		console.log("XMLHttpRequest ready state changed");
 		if (this.readyState == 4 && this.status == 200) {
 			callback(this.responseText);
 		}
 	}
 
 	xhttp.open(requestType, URL, sync);
-	xhttp.setRequestHeader('Content-Type', 'application/json');
-	// stringify: JS string -> JSON string
-	xhttp.send(JSON.stringify(data));
+	xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+	var dataArray = data.split('-');
+	let date = `{"year":${dataArray[0]},"month":${parseInt(dataArray[1], 10)},"day":${dataArray[2]}}`;
+	console.log(`Filter date: ${date}`);
+	xhttp.send(date);
 }
 
 // Request for book by id
 function getBook(id) {
-	sendRequest("get", "/books/" + id, "", false, (text) => {
-		console.log(text);
+	console.log(`GET ${id} book request`);
+	sendRequest("GET", "/library/" + id, "", false, (text) => {
+		window.history.pushState("", "", `/library/${id}`);
+		console.log(`Book string: ${text}`);
 		buffer = JSON.parse(text);
 	});
 
 	return buffer;
+}
+
+function filterByDate() {
+	let date = document.getElementsByName("book-return-form")[0].value;
+	sendRequest("POST", "/library/before-date-sort", date, true, (text) => {
+		window.history.pushState("", "", '/library/before-date-sort');
+		console.log("Callback for GET to /library/table");
+		// set the error text instead of the table
+		document.body.parentElement.innerHTML=text;
+	})
 }
 
 // Main page filter updating
@@ -42,29 +59,52 @@ function updateTable() {
 		// sendRequest( method, url, header, requestBody, successCB, errorCB, 
 		// [user], [password], [timeout], [certSource] )
 		sendRequest("GET", "/library/table", "", true, (text) => {
-			console.log("Callback for GET to /library/table: ", text);
+			window.history.pushState("", "", '/library/table');
+			console.log("Callback for GET to /library/table");
 			// set the error text instead of the table
-			document.getElementById("table").parentElement.innerHTML=text;
+			document.body.parentElement.innerHTML=text;
 		})
 	} else if (document.getElementsByName("filter")[1].checked) {
 		sendRequest("GET", "/library/table-in-stock", "", true, (text) => {
-			console.log("Callback for GET to /library/table-in-stock: ", text);
-			document.getElementById("table").parentElement.innerHTML=text;
+			window.history.pushState("", "", '/library/table-in-stock');
+			console.log("Callback for GET to /library/table-in-stock");
+			document.body.parentElement.innerHTML=text;
+			let filter = document.getElementsByName("filter");
+			for (btn of filter.values()) {
+				if (btn.value == "inStock") {
+					btn.checked = true;
+				}
+			}
 		})
 	} else if (document.getElementsByName("filter")[2].checked) {
 		sendRequest("GET", "/library/table-in-use", "", true, (text) => {
-			console.log("Callback for GET to /library/table-in-use: ", text);
-			document.getElementById("table").parentElement.innerHTML=text;
+			window.history.pushState("", "", '/library/table-in-use');
+			console.log("Callback for GET to /library/table-in-use");
+			document.body.parentElement.innerHTML=text;
+			let filter = document.getElementsByName("filter");
+			for (btn of filter.values()) {
+				if (btn.value == "inUse") {
+					btn.checked = true;
+				}
+			}
 		})
 	} else if (document.getElementsByName("filter")[3].checked) {
 		sendRequest("GET", "/library/table-outdated", "", true, (text) => {
-			console.log("Callback for GET to /library/table-outdated: ", text);
-			document.getElementById("table").parentElement.innerHTML=text;
+			window.history.pushState("", "", '/library/table-outdated');
+			console.log("Callback for GET to /library/table-outdated");
+			document.body.parentElement.innerHTML=text;
+			let filter = document.getElementsByName("filter");
+			for (btn of filter.values()) {
+				if (btn.value == "outdated") {
+					btn.checked = true;
+				}
+			}
 		})
 	}
 }
 
 function showBookInformationInModel(book) {
+	document.getElementById("book-id-input").value = book.id;
 	document.getElementById("book-title-input").value = book.title;
 	document.getElementById("book-author-input").value = book.author;
 	document.getElementById("book-date-input").value = book.date;
@@ -85,6 +125,7 @@ function showBookInformationInModel(book) {
 function toggleModalWindow(i = null) {
 	// hide opened book modal informatoin window
 	if (currentBookId != null) {
+		window.history.back();
 		document.getElementById("bookModal").style.display='none';
 		currentBookId = null;
 		return;
@@ -137,7 +178,6 @@ function giveButtonClick() {
 	toggleGiveModalWindow();
 }
 
-
 function saveButtonClick(id) {
 	title = document.getElementById("book-title-input").value;
 	author = document.getElementById("book-author-input").value;
@@ -155,7 +195,7 @@ function returnButtonClick() {
 	owner = document.getElementById("user-input").value;
 	returnDate = document.getElementById("return-date-input").value;
 
-	sendRequest("put", '/library/return', {id, owner, returnDate});
+	sendRequest("PUT", '/library/return', {id, owner, returnDate});
 	toggleModalWindow();
 	toggleModalWindow(id);
 	updateTable();
@@ -164,13 +204,13 @@ function returnButtonClick() {
 // PUT
 function createPutRequest(currentBook, title, author, date) {
 	let id = currentBook;
-	sendRequest("put", '/library', {id, title, author, date});
+	sendRequest("PUT", '/library', {id, title, author, date});
 	updateTable();
 }
 
 // POST
 function createPostRequest(title, author, date) {
-	sendRequest("post", '/library', {title, author, date});
+	sendRequest("POST", '/library', {title, author, date});
 	updateTable();
 }
 
