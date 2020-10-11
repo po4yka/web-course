@@ -10,7 +10,7 @@ function sendRequest(requestType, URL, data = "", sync = true,
 							updateTable();
 						}) {
 	
-	console.log("Sending", requestType, "request at URL", URL, "with data", data);
+	console.log("Sending", requestType, "request at URL:", URL, "with data", data);
 	
 	const xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -25,10 +25,14 @@ function sendRequest(requestType, URL, data = "", sync = true,
 	xhttp.open(requestType, URL, sync);
 	xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 
-	var dataArray = data.split('-');
-	let date = `{"year":${dataArray[0]},"month":${parseInt(dataArray[1], 10)},"day":${dataArray[2]}}`;
-	console.log(`Filter date: ${date}`);
-	xhttp.send(date);
+	if (URL.includes("before-date-sort")) {
+		var dataArray = data.split('-');
+		let date = `{"year":${dataArray[0]},"month":${parseInt(dataArray[1], 10)},"day":${dataArray[2]}}`;
+		console.log(`Filter date: ${date}`);
+		xhttp.send(date);
+	} else {
+		xhttp.send(JSON.stringify(data));
+	}
 }
 
 // Request for book by id
