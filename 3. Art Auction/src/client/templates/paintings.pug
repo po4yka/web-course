@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		title Paintings
+		link(rel='stylesheet', type='text/css', href='./css/style.css')
+		link(rel='shortcut icon' type='image/png' href='./img/favicon.ico')
+		script(src='https://code.jquery.com/jquery-3.5.1.min.js' defer)
+		script(src='./js/app.min.js' defer)
+	body
+		div(class="outer")
+			include header
+			div(class="content")
+				i(id="prev" class="leftArrow")
+				i(id="next" class="rightArrow")
+				div(class="center")
+					h3(id="title-author" align="center") Paintings
+					div(class="center image")
+						img(id="Image")
+					h3(id="Description" align="center" onClick=`test()`) Description
+					div(class="centerDescription")
+						p(id="Description")
+				include change-modal
+				button(class="edit-btn")
+					| Edit
+					div(class="edit-btn__horizontal")
+					div(class="edit-btn__vertical")

@@ -1,0 +1,18 @@
+.arrow (@deg: 0deg){
+	@Width: 8px;
+	@HoverWidthDelta: 1px;
+	border-style: solid;
+	border-width: 0 @Width @Width 0;
+	border-color: rgba(200,200,200, 0.5);
+	&:hover {
+		border-color: rgba(200,200,200, 1.0);
+	}
+	&:active {
+		border-color: rgba(200,200,200, 1.0);
+		border-width: 0 @Width+@HoverWidthDelta @Width+@HoverWidthDelta 0;
+		padding: @Width+@HoverWidthDelta;
+	}
+	padding: @Width;
+	transform: rotate(@deg);
+	-webkit-transform: rotate(@deg);
+}

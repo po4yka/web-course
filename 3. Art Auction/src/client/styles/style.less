@@ -1,0 +1,101 @@
+@import "fonts.less";
+@import "gradient.less";
+@import "header.less";
+@import "image.less";
+@import "arrow.less";
+@import "btn.less";
+@import "edit-modal.less";
+@import "fonts.less";
+@import "participants-table.less";
+@import "participants-block.less";
+@import "addlot.less";
+@import "slider-round.less";
+
+html, body, .outer{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	background-color: #caf0f8;
+	.gradient(#f8f9fa, #212529);
+	background-repeat: no-repeat;
+}
+
+.content {
+	width: 100%;
+	div {
+		display: inline-block;
+	}
+}
+
+.center {
+	display: block;
+	margin: auto;
+	width: 100%;
+	clear: both;
+}
+
+.centerDescription {
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+.leftArrow, .rightArrow {
+	position: fixed;
+	top: 50%;
+}
+
+.leftArrow {
+	left: 20px;
+	.arrow(135deg);
+}
+
+.rightArrow {
+	right: 20px;
+	.arrow(-45deg);
+}
+
+.modalBack {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	background-color: rgba(0,0,0,0.4);
+}
+
+.modalContent {
+	background-color: #6c757d;
+	position: relative;
+	margin: 15% auto;
+	width: 40%;
+	padding: 0;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.modalHeader {
+	padding: 2px 16px;
+	background-color: #343a40;
+}
+
+.modalBody {
+	padding: 2px 16px;
+}
+
+.modalCloseButton {
+	float: right;
+	font-size: 28px;
+	&:hover {
+		color: #343a40;
+		cursor: pointer;
+	}
+	&:active {
+		font-weight: bold;
+	}
+}
+
+.inlineBlock {
+	display: inline-block;
+}

@@ -22,6 +22,12 @@ Technologies used in the project: Express, JS, Passport.JS, PUG, CSS
 
 ![Working table](./readme_media/library/lib_main.png)
 
+## 3. Art auction
+
+Technologies used in the project: Express, JS, LESS, PUG, JQuery
+
+![Art gallery](./readme_media/auction/auction.gif)
+
 ## Stepik course answers
 
 Web-technology university [course](https://stepik.org/course/4006) answers.

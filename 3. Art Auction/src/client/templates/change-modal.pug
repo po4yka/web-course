@@ -1,0 +1,39 @@
+div(class="popup-overlay")
+    div(class="popup-content")
+        div
+            label Title
+            br
+            input(id="TitleInput" type="text" required)
+        div
+            label Author
+            br
+            input(id="AuthorInput" type="text" required)
+        br
+        div
+            label Description
+            br
+            textarea(id="DescriptionInput" type="textarea" required)
+        br
+        div
+            label Image source
+            br
+            input(id="ImageSrcInput" type="text" required)
+        div
+            label Starting price
+            br
+            input(id="StartPriceInput" type="number" required)
+        div
+            label Min step
+            br
+            input(id="MinStepInput" type="number" required)
+        div
+            label Max step
+            br
+            input(id="MaxStepInput" type="number" required)
+        div
+            label Participation in tenders
+            br
+            input(id="InTradesToggle" type='checkbox')
+        br
+        button(id="UpdateLot" class="general-btn") Save
+        button(class="general-btn close-btn") Close

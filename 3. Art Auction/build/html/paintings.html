@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Paintings</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="shortcut icon" type="image/png" href="./img/favicon.ico">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" defer="defer"></script>
+    <script src="./js/app.min.js" defer="defer"></script>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="header">
+            <div id="PaintingsHeaderButton">Paintings</div>
+            <div id="ParticipantsHeaderButton">Participants</div>
+            <div id="SettingsHeaderButton">Settings</div>
+            <div id="AddLotHeaderButton">Add a lot</div>
+        </div>
+        <div class="content"><i class="leftArrow" id="prev"></i><i class="rightArrow" id="next"></i>
+            <div class="center">
+                <h3 id="title-author" align="center">Paintings</h3>
+                <div class="center image"><img id="Image"></div>
+                <h3 id="Description" align="center" onclick="test()">Description</h3>
+                <div class="centerDescription">
+                    <p id="Description"></p>
+                </div>
+            </div>
+            <div class="popup-overlay">
+                <div class="popup-content">
+                    <div><label>Title</label><br><input id="TitleInput" type="text" required></div>
+                    <div><label>Author</label><br><input id="AuthorInput" type="text" required></div><br>
+                    <div><label>Description</label><br><textarea id="DescriptionInput" type="textarea" required></textarea></div><br>
+                    <div><label>Image source</label><br><input id="ImageSrcInput" type="text" required></div>
+                    <div><label>Starting price</label><br><input id="StartPriceInput" type="number" required></div>
+                    <div><label>Min step</label><br><input id="MinStepInput" type="number" required></div>
+                    <div><label>Max step</label><br><input id="MaxStepInput" type="number" required></div>
+                    <div><label>Participation in tenders</label><br><input id="InTradesToggle" type="checkbox"></div><br><button class="general-btn" id="UpdateLot">Save</button><button class="general-btn close-btn">Close</button>
+                </div>
+            </div><button class="edit-btn">Edit<div class="edit-btn__horizontal"></div>
+                <div class="edit-btn__vertical"></div>
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

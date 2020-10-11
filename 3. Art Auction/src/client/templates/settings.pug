@@ -1,0 +1,35 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		title Settings
+		link(rel='stylesheet', href='./css/style.css')
+		script(src='https://code.jquery.com/jquery-3.5.1.min.js')
+		script(src='./js/app.min.js')
+	body
+		div(class="outer")
+			include header
+			div(class="content")
+				form(class="center" id="SettingsForm")
+					div
+						label Start date
+						br
+						input(id="AuctionDateInput" type="date" required)
+					| 
+					div
+						label Start time
+						br
+						input(id="AuctionTimeInput" type="time" required)
+					| 
+					div
+						label Lot timeout
+						br
+						input(id="AuctionLotTimeoutInput" type="number" required)
+					| 
+					div
+						label Lot initial pause
+						br
+						input(id="AuctionInitialPause" type="number" required)
+					
+					span(id="SaveSettingsButton" class="button")
+						| Save settings

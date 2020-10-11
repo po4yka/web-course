@@ -1,0 +1,57 @@
+[
+    {
+        "title": "Nighthawks",
+        "author": "Edward Hopper",
+        "description": "Nighthawks is a 1942 oil on canvas painting by Edward Hopper that portrays people in a downtown diner late at night as viewed through the diner's large glass window. The light coming from the diner illuminates a darkened and deserted urban streetscape.",
+        "imageSource": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Nighthawks_by_Edward_Hopper_1942.jpg/1920px-Nighthawks_by_Edward_Hopper_1942.jpg",
+        "startPrice": "1000",
+        "minStep": "100",
+        "maxStep": "423",
+        "inTrades": false,
+        "id": 1
+    },
+    {
+        "title": "Automat",
+        "author": "Edward Hopper",
+        "description": "Automat is a 1927 painting by the American realist painter Edward Hopper. The painting was first displayed on Valentine's Day 1927 at the opening of Hopper's second solo show, at the Rehn Galleries in New York City. By April it had been sold for $1,200. The painting is today owned by the Des Moines Art Center in Iowa.",
+        "imageSource": "https://upload.wikimedia.org/wikipedia/en/6/6f/HopperAutomat.jpg",
+        "startPrice": "500",
+        "minStep": "50",
+        "maxStep": "100",
+        "inTrades": true,
+        "id": 2
+    },
+    {
+        "title": "Office in a Small City",
+        "author": "Edward Hopper",
+        "description": "The painting depicts a man sitting in a corner office surveying the landscape outdoors. The painting depicts loneliness and beauty in a uniquely stark yet pleasing fashion, a common theme amongst Hopper's works. It was described by Hopper's wife as \"the man in concrete wall.\"",
+        "imageSource": "https://upload.wikimedia.org/wikipedia/en/8/8e/Office_in_a_Small_City.jpg",
+        "startPrice": "1600",
+        "minStep": "360",
+        "maxStep": "386",
+        "inTrades": false,
+        "id": 3
+    },
+    {
+        "title": "The Scream",
+        "author": "Edvard Munch",
+        "description": "The original German title given by Munch to his work was Der Schrei der Natur (The Scream of Nature), and the Norwegian title is Skrik (Shriek).",
+        "imageSource": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg/800px-Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg",
+        "startPrice": "8912",
+        "minStep": "123",
+        "maxStep": "54",
+        "inTrades": false,
+        "id": 4
+    },
+    {
+        "title": "Skull of a Skeleton with Burning Cigarette",
+        "author": "Vincent van Gogh",
+        "description": " The small and undated oil-on-canvas painting featuring a skeleton and cigarette is part of the permanent collection of the Van Gogh Museum in Amsterdam.",
+        "imageSource": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Vincent_van_Gogh_-_Head_of_a_skeleton_with_a_burning_cigarette_-_Google_Art_Project.jpg/678px-Vincent_van_Gogh_-_Head_of_a_skeleton_with_a_burning_cigarette_-_Google_Art_Project.jpg",
+        "startPrice": "51314",
+        "minStep": "1341",
+        "maxStep": "4132",
+        "inTrades": true,
+        "id": 5
+    }
+]

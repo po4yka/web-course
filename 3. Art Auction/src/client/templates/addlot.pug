@@ -1,0 +1,52 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		title Add a lot
+		link(rel='stylesheet', href='./css/style.css')
+		script(src='https://code.jquery.com/jquery-3.5.1.min.js')
+		script(src='./js/app.min.js' defer)
+	body
+		div(class="outer")
+			include header
+			div(class="content")
+				form(id="AddLot")
+					div
+						label Title
+						br
+						input(id="TitleInput" type="text" required)
+					| 
+					div
+						label Author
+						br
+						input(id="AuthorInput" type="text" required)
+					| 
+					br
+					div
+						label Description
+						br
+						textarea(id="DescriptionInput" type="textarea" required)
+					| 
+					br
+					div
+						label Image source
+						br
+						input(id="ImageSrcInput" type="text" required)
+					| 
+					div
+						label Starting price
+						br
+						input(id="StartPriceInput" type="number" required)
+					| 
+					div
+						label Min step
+						br
+						input(id="MinStepInput" type="number" required)
+					| 
+					div
+						label Max step
+						br
+						input(id="MaxStepInput" type="number" required)
+					| 
+					br
+					div(id="AddLotButton" class="button") Add

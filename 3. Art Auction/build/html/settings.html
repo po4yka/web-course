@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Settings</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./js/app.min.js"></script>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="header">
+            <div id="PaintingsHeaderButton">Paintings</div>
+            <div id="ParticipantsHeaderButton">Participants</div>
+            <div id="SettingsHeaderButton">Settings</div>
+            <div id="AddLotHeaderButton">Add a lot</div>
+        </div>
+        <div class="content">
+            <form class="center" id="SettingsForm">
+                <div><label>Start date</label><br><input id="AuctionDateInput" type="date" required></div>
+                <div><label>Start time</label><br><input id="AuctionTimeInput" type="time" required></div>
+                <div><label>Lot timeout</label><br><input id="AuctionLotTimeoutInput" type="number" required></div>
+                <div><label>Lot initial pause</label><br><input id="AuctionInitialPause" type="number" required></div><span class="button" id="SaveSettingsButton">Save settings</span>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

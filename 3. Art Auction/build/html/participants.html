@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Participants</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" defer="defer"></script>
+    <script src="./js/app.min.js" defer="defer"></script>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="header">
+            <div id="PaintingsHeaderButton">Paintings</div>
+            <div id="ParticipantsHeaderButton">Participants</div>
+            <div id="SettingsHeaderButton">Settings</div>
+            <div id="AddLotHeaderButton">Add a lot</div>
+        </div>
+        <div class="content participants-block">
+            <form class="center" id="AddParticipantForm">
+                <div><label>Name</label><br><input id="NewParticipantNameInput" type="text" required></div>
+                <div><label>Wealth</label><br><input id="NewParticipantWealthInput" type="number" required></div><br><span class="button add-new-participant-btn" id="AddNewParticipantButton">Add new participant</span>
+            </form>
+        </div>
+        <table style="margin: auto" id="ParticipantsTable"></table>
+    </div>
+    <div class="modalBack" id="ParticipantModalBackground">
+        <div class="modalContent">
+            <div class="modalHeader"><span class="modalCloseButton" id="ParticipantModalClose">&times</span>
+                <h2>Participant info</h2>
+            </div>
+            <div class="modalBody">
+                <form id="ParticipantModalForm" style="text-align: center;">
+                    <div><label>Name</label><br><input id="ParticipantModalName" type="text" required></div>
+                    <div><label>Wealth</label><br><input id="ParticipantModalWealth" type="number" required></div>
+                </form>
+                <div><button class="general-btn" id="ParticipantModalSave">Save</button><button class="general-btn" id="ParticipantModalDelete">Delete</button></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
